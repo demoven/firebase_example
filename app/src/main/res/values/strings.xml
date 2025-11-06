@@ -3,4 +3,11 @@
     <string name="home_screen_title">Accueil</string>
     <string name="signin_screen_title">Connexion</string>
     <string name="signup_screen_title">Inscription</string>
+    <string name="email">Email</string>
+    <string name="password">Mot de passe</string>
+    <string name="sign_in">Se connecter</string>
+    <string name="sign_up">S\'inscrire</string>
+    <string name="already_have_account">Vous avez déjà un compte ?</string>
+    <string name="logout">Se déconnecter</string>
+    <string name="welcome_message">Bienvenue, dans l\'example Firebase !</string>
 </resources>

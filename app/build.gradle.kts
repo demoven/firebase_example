@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    // Ajouter le plugin Google Services pour Firebase
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -42,6 +44,12 @@ android {
 }
 
 dependencies {
+    //Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
+    // When using the BoM, don't specify versions in Firebase dependencies
+    // https://firebase.google.com/docs/android/setup#available-libraries
+    implementation("com.google.firebase:firebase-auth")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
