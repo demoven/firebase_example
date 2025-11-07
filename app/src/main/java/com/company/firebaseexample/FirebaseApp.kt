@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -49,6 +50,19 @@ fun FirebaseApp(
     val currentScreen = FirebaseAppScreens.valueOf(
         currentRoute ?: FirebaseAppScreens.Home.name
     )
+
+    LaunchedEffect(isLoggedIn) {
+        val destination = if (isLoggedIn) FirebaseAppScreens.Home.name else FirebaseAppScreens.SignIn.name
+        val popUpToRoute = if (isLoggedIn) FirebaseAppScreens.SignIn.name else FirebaseAppScreens.Home.name
+
+        if (navController.currentDestination?.route != destination) {
+            navController.navigate(destination) {
+                popUpTo(popUpToRoute) { inclusive = true }
+                launchSingleTop = true
+                restoreState = true
+            }
+        }
+    }
 
     Scaffold (
         topBar = {
